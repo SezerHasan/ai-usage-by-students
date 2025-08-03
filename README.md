@@ -180,11 +180,4 @@ This project is open for contributions. Please ensure all analysis follows the e
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
-
----
-
-**Project Status**: Complete  
-**Last Updated**: 2024  
-**Dataset Size**: 10,002 observations  
-**Analysis Period**: 2024-2025 
+This project is licensed under the MIT License - see the LICENSE file for details. 
