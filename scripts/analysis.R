@@ -1,5 +1,5 @@
 # AI Usage by Students - Data Analysis
-# Author: Data Scientist
+# Author: Hasan Sezer
 # Date: 2025
 
 # Load required libraries
