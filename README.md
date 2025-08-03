@@ -47,9 +47,9 @@ The dataset contains the following variables:
 ## Key Findings
 
 ### 1. Student Level Insights
-- **Graduate students** show the highest satisfaction ratings (4.2/5)
-- **High school students** have the longest average session times (22.3 minutes)
-- **Undergraduate students** represent the largest user group (65% of sessions)
+- **All student levels** show remarkably similar satisfaction ratings (3.41-3.43/5)
+- **High school students** have the longest average session times (20.0 minutes)
+- **Undergraduate students** represent the largest user group (59.8% of sessions)
 
 ### 2. Discipline Performance
 - **History** and **Engineering** disciplines achieve the highest satisfaction ratings

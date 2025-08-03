@@ -25,7 +25,7 @@ This report presents a comprehensive analysis of AI assistant usage patterns amo
 - **Average Satisfaction**: 3.42/5
 - **Average Session Length**: 20.3 minutes
 - **Reuse Rate**: 70.3%
-- **Key Insight**: Slightly longer sessions but similar satisfaction
+- **Key Insight**: Similar satisfaction across all levels
 
 #### High School Students (20.3% of users)
 - **Average Satisfaction**: 3.43/5
