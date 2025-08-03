@@ -214,6 +214,22 @@
             margin-top: 3rem;
         }
 
+        .chart-container {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .chart-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2E86AB;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 2rem;
@@ -243,11 +259,11 @@
         <!-- Key Statistics -->
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="stat-number">10,002</div>
+                <div class="stat-number">10,000</div>
                 <div class="stat-label">Total Sessions</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number">3.4</div>
+                <div class="stat-number">3.42</div>
                 <div class="stat-label">Average Satisfaction</div>
             </div>
             <div class="stat-card">
@@ -255,7 +271,7 @@
                 <div class="stat-label">Completion Rate</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number">78%</div>
+                <div class="stat-number">70.4%</div>
                 <div class="stat-label">Reuse Rate</div>
             </div>
         </div>
@@ -270,80 +286,123 @@
                     <div class="insight-card">
                         <h3>Student Level Analysis</h3>
                         <ul>
-                            <li><strong>Graduate students</strong> show highest satisfaction (4.2/5)</li>
-                            <li><strong>High school students</strong> have longest sessions (22.3 min)</li>
-                            <li><strong>Undergraduate students</strong> represent 65% of users</li>
+                            <li><strong>Graduate students</strong> show highest satisfaction (3.42/5)</li>
+                            <li><strong>High school students</strong> have longest sessions (20.0 min)</li>
+                            <li><strong>Undergraduate students</strong> represent 59.8% of users</li>
                         </ul>
                     </div>
                     <div class="insight-card">
                         <h3>Discipline Performance</h3>
                         <ul>
-                            <li><strong>History</strong> and <strong>Engineering</strong> lead satisfaction</li>
-                            <li><strong>Computer Science</strong> has highest completion rates</li>
-                            <li><strong>Psychology</strong> shows moderate satisfaction</li>
+                            <li><strong>Biology</strong> leads satisfaction (3.45/5)</li>
+                            <li><strong>History</strong> shows strong performance (3.44/5)</li>
+                            <li><strong>Psychology</strong> has moderate satisfaction (3.43/5)</li>
                         </ul>
                     </div>
                     <div class="insight-card">
                         <h3>Task Type Effectiveness</h3>
                         <ul>
-                            <li><strong>Homework Help</strong> achieves highest satisfaction</li>
-                            <li><strong>Writing</strong> tasks are most common (35%)</li>
-                            <li><strong>Coding</strong> tasks show strong completion rates</li>
+                            <li><strong>Coding</strong> achieves highest satisfaction (3.46/5)</li>
+                            <li><strong>Homework Help</strong> shows strong performance (3.43/5)</li>
+                            <li><strong>Writing</strong> tasks are most common (31%)</li>
                         </ul>
                     </div>
                     <div class="insight-card">
                         <h3>AI Assistance Impact</h3>
                         <ul>
                             <li>Higher assistance levels (4-5) increase satisfaction</li>
-                            <li>Optimal levels vary by task and student level</li>
-                            <li>High satisfaction correlates with reuse</li>
+                            <li>Strong correlation (r = 0.776) with satisfaction</li>
+                            <li>Level 5 achieves 4.67/5 satisfaction</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Visualizations -->
+        <!-- Data Visualizations -->
         <div class="section">
             <div class="section-header">
                 <h2>Data Visualizations</h2>
             </div>
             <div class="section-content">
                 <div class="visualization-grid">
-                    <div class="viz-card">
-                        <img src="plots/student_level_satisfaction.png" alt="Satisfaction by Student Level">
+                    <div class="chart-container">
+                        <div class="chart-title">Satisfaction Ratings by Student Level</div>
+                        <img src="plots/student_level_satisfaction.png" alt="Satisfaction by Student Level" style="width: 100%; height: auto;">
                         <div class="viz-caption">
-                            <strong>Satisfaction Ratings by Student Level:</strong> Graduate students show consistently higher satisfaction ratings compared to undergraduate and high school students.
+                            <strong>Key Insight:</strong> Graduate students show consistently higher satisfaction ratings compared to undergraduate and high school students.
                         </div>
                     </div>
-                    <div class="viz-card">
-                        <img src="plots/discipline_satisfaction.png" alt="Satisfaction by Discipline">
+                    
+                    <div class="chart-container">
+                        <div class="chart-title">Average Satisfaction by Discipline</div>
+                        <img src="plots/discipline_satisfaction.png" alt="Satisfaction by Discipline" style="width: 100%; height: auto;">
                         <div class="viz-caption">
-                            <strong>Average Satisfaction by Discipline:</strong> History and Engineering disciplines achieve the highest satisfaction ratings, while Computer Science shows strong performance.
+                            <strong>Key Insight:</strong> Biology and History disciplines achieve the highest satisfaction ratings, while Computer Science shows strong performance.
                         </div>
                     </div>
-                    <div class="viz-card">
-                        <img src="plots/task_type_satisfaction.png" alt="Satisfaction by Task Type">
+                    
+                    <div class="chart-container">
+                        <div class="chart-title">Satisfaction by Task Type</div>
+                        <img src="plots/task_type_satisfaction.png" alt="Satisfaction by Task Type" style="width: 100%; height: auto;">
                         <div class="viz-caption">
-                            <strong>Satisfaction by Task Type:</strong> Homework Help tasks achieve the highest satisfaction ratings, followed by Writing and Coding tasks.
+                            <strong>Key Insight:</strong> Coding tasks achieve the highest satisfaction ratings, followed by Homework Help and Writing tasks.
                         </div>
                     </div>
-                    <div class="viz-card">
-                        <img src="plots/assistance_level_impact.png" alt="AI Assistance Level Impact">
+                    
+                    <div class="chart-container">
+                        <div class="chart-title">AI Assistance Level Impact</div>
+                        <img src="plots/assistance_level_impact.png" alt="AI Assistance Level Impact" style="width: 100%; height: auto;">
                         <div class="viz-caption">
-                            <strong>AI Assistance Level Impact:</strong> Higher assistance levels correlate with increased satisfaction and completion rates.
+                            <strong>Key Insight:</strong> Higher assistance levels correlate with increased satisfaction and completion rates.
                         </div>
                     </div>
-                    <div class="viz-card">
-                        <img src="plots/usage_trends.png" alt="Usage Trends Over Time">
+                    
+                    <div class="chart-container">
+                        <div class="chart-title">Session Length vs Satisfaction</div>
+                        <img src="plots/session_length_satisfaction.png" alt="Session Length vs Satisfaction" style="width: 100%; height: auto;">
                         <div class="viz-caption">
-                            <strong>Usage Trends Over Time:</strong> Daily session counts and average satisfaction show patterns over the analysis period.
+                            <strong>Key Insight:</strong> Session length shows minimal correlation with satisfaction, suggesting efficiency is more important than duration.
                         </div>
                     </div>
-                    <div class="viz-card">
-                        <img src="plots/correlation_matrix.png" alt="Correlation Matrix">
+                    
+                    <div class="chart-container">
+                        <div class="chart-title">Usage Trends Over Time</div>
+                        <img src="plots/usage_trends.png" alt="Usage Trends Over Time" style="width: 100%; height: auto;">
                         <div class="viz-caption">
-                            <strong>Correlation Matrix:</strong> Relationships between key numeric variables including session length, prompts, assistance level, and satisfaction.
+                            <strong>Key Insight:</strong> Daily session counts and average satisfaction show patterns over the analysis period.
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <div class="chart-title">Correlation Matrix</div>
+                        <img src="plots/correlation_matrix.png" alt="Correlation Matrix" style="width: 100%; height: auto;">
+                        <div class="viz-caption">
+                            <strong>Key Insight:</strong> Strong correlation between AI assistance level and satisfaction (r = 0.776).
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <div class="chart-title">Distribution of Final Outcomes</div>
+                        <img src="plots/outcome_distribution.png" alt="Outcome Distribution" style="width: 100%; height: auto;">
+                        <div class="viz-caption">
+                            <strong>Key Insight:</strong> Most sessions result in completed assignments, with some leading to idea drafting.
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <div class="chart-title">AI Tool Reuse Rate by Discipline</div>
+                        <img src="plots/reuse_rate_discipline.png" alt="Reuse Rate by Discipline" style="width: 100%; height: auto;">
+                        <div class="viz-caption">
+                            <strong>Key Insight:</strong> Different disciplines show varying reuse rates, indicating adoption patterns.
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <div class="chart-title">Session Efficiency vs Satisfaction</div>
+                        <img src="plots/session_efficiency.png" alt="Session Efficiency" style="width: 100%; height: auto;">
+                        <div class="viz-caption">
+                            <strong>Key Insight:</strong> Session efficiency (prompts per minute) shows relationship with satisfaction across student levels.
                         </div>
                     </div>
                 </div>
@@ -373,9 +432,9 @@
                 <div class="rec-card">
                     <h3>For Students</h3>
                     <ul>
-                        <li>Use AI for homework help and writing tasks</li>
+                        <li>Use AI for coding and homework help tasks</li>
                         <li>Keep sessions focused and efficient</li>
-                        <li>Adapt usage patterns to academic field</li>
+                        <li>Choose higher assistance levels (4-5) for better outcomes</li>
                     </ul>
                 </div>
             </div>
@@ -391,7 +450,7 @@
                     <div class="insight-card">
                         <h3>Data Analysis</h3>
                         <ul>
-                            <li>Comprehensive EDA on 10,002 sessions</li>
+                            <li>Comprehensive EDA on 10,000 sessions</li>
                             <li>Statistical testing (ANOVA, Chi-square)</li>
                             <li>Correlation analysis</li>
                         </ul>
@@ -399,9 +458,9 @@
                     <div class="insight-card">
                         <h3>Machine Learning</h3>
                         <ul>
-                            <li>Random Forest for satisfaction prediction</li>
+                            <li>K-means clustering for user segmentation</li>
                             <li>Variable importance analysis</li>
-                            <li>K-means clustering for usage patterns</li>
+                            <li>Pattern recognition in usage data</li>
                         </ul>
                     </div>
                     <div class="insight-card">
@@ -419,7 +478,8 @@
 
     <div class="footer">
         <p>&copy; 2024 AI Usage by Students Analysis Project</p>
-        <p>Dataset: 10,002 student sessions | Analysis Period: 2024-2025</p>
+        <p>Dataset: 10,000 student sessions | Analysis Period: 2024-2025</p>
+        <p>Repository: <a href="https://github.com/SezerHasan/ai-usage-by-students" style="color: #fff;">GitHub</a></p>
     </div>
 </body>
 </html> 

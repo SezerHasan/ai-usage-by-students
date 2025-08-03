@@ -83,18 +83,42 @@ The dataset contains the following variables:
 
 ## Visualizations
 
-The project includes comprehensive visualizations covering:
+The project includes comprehensive visualizations covering all key insights:
 
-1. **Satisfaction Distribution by Student Level**
-2. **Discipline Performance Analysis**
-3. **Task Type Effectiveness**
-4. **AI Assistance Level Impact**
-5. **Session Length vs Satisfaction**
-6. **Usage Trends Over Time**
-7. **Correlation Matrix**
-8. **Outcome Distribution**
-9. **Reuse Rate Analysis**
-10. **Session Efficiency Metrics**
+### Key Visualizations
+
+![Satisfaction by Student Level](plots/student_level_satisfaction.png)
+*Satisfaction ratings across different student levels*
+
+![Discipline Performance](plots/discipline_satisfaction.png)
+*Average satisfaction by academic discipline*
+
+![Task Type Effectiveness](plots/task_type_satisfaction.png)
+*Satisfaction ratings for different task types*
+
+![AI Assistance Impact](plots/assistance_level_impact.png)
+*Impact of AI assistance levels on satisfaction and completion*
+
+![Session Length vs Satisfaction](plots/session_length_satisfaction.png)
+*Relationship between session duration and satisfaction*
+
+![Usage Trends](plots/usage_trends.png)
+*Daily usage patterns and satisfaction trends*
+
+![Correlation Matrix](plots/correlation_matrix.png)
+*Correlations between key variables*
+
+![Outcome Distribution](plots/outcome_distribution.png)
+*Distribution of final session outcomes*
+
+![Reuse Rate by Discipline](plots/reuse_rate_discipline.png)
+*AI tool reuse patterns across disciplines*
+
+![Session Efficiency](plots/session_efficiency.png)
+*Session efficiency vs satisfaction relationship*
+
+### Interactive Dashboard
+Access the full interactive dashboard: [Dashboard](dashboard.html)
 
 ## Technical Details
 
