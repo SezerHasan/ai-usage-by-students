@@ -1,4 +1,4 @@
-# AI Usage by Students: Data Analysis Project
+# AI Usage by Students: Data Science Project
 
 ## Project Overview
 
