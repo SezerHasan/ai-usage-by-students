@@ -1,6 +1,6 @@
 # AI Usage by Students - Visualizations
-# Author: Data Scientist
-# Date: 2024
+# Author: Hasan Sezer
+# Date: 2025
 
 # Load required libraries
 library(tidyverse)
