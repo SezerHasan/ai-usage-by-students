@@ -7,22 +7,33 @@ library(tidyverse)
 library(ggplot2)
 library(dplyr)
 
-# Set theme for professional plots with proper contrast
-theme_set(theme_minimal() +
+# Create a custom theme with explicit white background and dark text
+custom_theme <- theme_minimal() +
   theme(
-    plot.title = element_text(size = 16, face = "bold", hjust = 0.5, color = "#2E3E50"),
-    plot.subtitle = element_text(size = 12, hjust = 0.5, color = "#34495E"),
-    axis.title = element_text(size = 12, face = "bold", color = "#2E3E50"),
-    axis.text = element_text(size = 10, color = "#34495E"),
-    legend.title = element_text(size = 11, face = "bold", color = "#2E3E50"),
-    legend.text = element_text(size = 10, color = "#34495E"),
-    panel.grid.minor = element_blank(),
-    panel.grid.major = element_line(color = "#BDC3C7", size = 0.3),
+    # Text colors - all dark for contrast against white
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5, color = "black"),
+    plot.subtitle = element_text(size = 12, hjust = 0.5, color = "black"),
+    axis.title = element_text(size = 12, face = "bold", color = "black"),
+    axis.text = element_text(size = 10, color = "black"),
+    legend.title = element_text(size = 11, face = "bold", color = "black"),
+    legend.text = element_text(size = 10, color = "black"),
+    
+    # Backgrounds - all white
     panel.background = element_rect(fill = "white", color = NA),
     plot.background = element_rect(fill = "white", color = NA),
     legend.background = element_rect(fill = "white", color = NA),
-    legend.box.background = element_rect(fill = "white", color = NA)
-  ))
+    legend.box.background = element_rect(fill = "white", color = NA),
+    
+    # Grid lines - light gray
+    panel.grid.minor = element_blank(),
+    panel.grid.major = element_line(color = "#E5E5E5", size = 0.5),
+    
+    # Panel border
+    panel.border = element_rect(color = "#CCCCCC", fill = NA, size = 0.5)
+  )
+
+# Set the custom theme
+theme_set(custom_theme)
 
 # Read processed data
 data <- read.csv("data/processed_data.csv")
@@ -33,7 +44,7 @@ colors <- c("#3498DB", "#E74C3C", "#2ECC71", "#F39C12", "#9B59B6", "#1ABC9C", "#
 
 # 1. Student Level Analysis
 p1 <- ggplot(data, aes(x = StudentLevel, y = SatisfactionRating, fill = StudentLevel)) +
-  geom_boxplot(alpha = 0.8, color = "#2E3E50", linewidth = 0.8) +
+  geom_boxplot(alpha = 0.8, color = "black", linewidth = 0.8) +
   scale_fill_manual(values = colors[1:3]) +
   labs(
     title = "Satisfaction Ratings by Student Level",
@@ -41,7 +52,7 @@ p1 <- ggplot(data, aes(x = StudentLevel, y = SatisfactionRating, fill = StudentL
     y = "Satisfaction Rating",
     fill = "Student Level"
   ) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1, color = "#2E3E50"))
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, color = "black"))
 
 # 2. Discipline Analysis
 discipline_summary <- data %>%
@@ -53,7 +64,7 @@ discipline_summary <- data %>%
   arrange(desc(AvgSatisfaction))
 
 p2 <- ggplot(discipline_summary, aes(x = reorder(Discipline, AvgSatisfaction), y = AvgSatisfaction, fill = AvgSatisfaction)) +
-  geom_col(color = "#2E3E50", linewidth = 0.5) +
+  geom_col(color = "black", linewidth = 0.5) +
   scale_fill_gradient(low = "#3498DB", high = "#E74C3C") +
   coord_flip() +
   labs(
@@ -74,7 +85,7 @@ task_summary <- data %>%
   arrange(desc(AvgSatisfaction))
 
 p3 <- ggplot(task_summary, aes(x = reorder(TaskType, AvgSatisfaction), y = AvgSatisfaction, fill = TaskCount)) +
-  geom_col(color = "#2E3E50", linewidth = 0.5) +
+  geom_col(color = "black", linewidth = 0.5) +
   scale_fill_gradient(low = "#F39C12", high = "#E67E22") +
   coord_flip() +
   labs(
@@ -160,7 +171,7 @@ p7 <- ggplot(correlation_df, aes(x = Var1, y = Var2, fill = Correlation)) +
     y = "",
     fill = "Correlation"
   ) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1, color = "#2E3E50"))
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, color = "black"))
 
 # 8. Outcome Distribution
 outcome_summary <- data %>%
@@ -179,7 +190,10 @@ p8 <- ggplot(outcome_summary, aes(x = "", y = Percentage, fill = FinalOutcome)) 
     fill = "Outcome"
   ) +
   theme_void() +
-  theme(plot.title = element_text(size = 16, face = "bold", hjust = 0.5, color = "#2E3E50"))
+  theme(
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5, color = "black"),
+    legend.text = element_text(color = "black")
+  )
 
 # 9. Reuse Rate by Discipline
 reuse_summary <- data %>%
@@ -192,7 +206,7 @@ reuse_summary <- data %>%
   arrange(desc(ReuseRate))
 
 p9 <- ggplot(reuse_summary, aes(x = reorder(Discipline, ReuseRate), y = ReuseRate, fill = SessionCount)) +
-  geom_col(color = "#2E3E50", linewidth = 0.5) +
+  geom_col(color = "black", linewidth = 0.5) +
   scale_fill_gradient(low = "#9B59B6", high = "#1ABC9C") +
   coord_flip() +
   labs(
@@ -215,7 +229,7 @@ p10 <- ggplot(data, aes(x = SessionEfficiency, y = SatisfactionRating, color = S
   ) +
   xlim(0, quantile(data$SessionEfficiency, 0.95, na.rm = TRUE))  # Remove outliers
 
-# Save individual plots with high quality
+# Save individual plots with high quality and explicit white background
 ggsave("plots/student_level_satisfaction.png", p1, width = 10, height = 6, dpi = 300, bg = "white")
 ggsave("plots/discipline_satisfaction.png", p2, width = 10, height = 8, dpi = 300, bg = "white")
 ggsave("plots/task_type_satisfaction.png", p3, width = 10, height = 8, dpi = 300, bg = "white")
