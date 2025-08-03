@@ -88,8 +88,6 @@ The project includes comprehensive visualizations covering all key insights:
 ### Interactive Dashboard
 Access the full interactive dashboard: [Dashboard](https://sezerhasan.github.io/ai-usage-by-students/dashboard.html)
 
-**Live Site**: [https://sezerhasan.github.io/ai-usage-by-students/](https://sezerhasan.github.io/ai-usage-by-students/)
-
 ### Visualization Types
 1. **Satisfaction Distribution by Student Level**
 2. **Discipline Performance Analysis**
