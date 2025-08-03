@@ -7,29 +7,33 @@ library(tidyverse)
 library(ggplot2)
 library(dplyr)
 
-# Set theme for professional plots
+# Set theme for professional plots with proper contrast
 theme_set(theme_minimal() +
   theme(
-    plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
-    plot.subtitle = element_text(size = 12, hjust = 0.5),
-    axis.title = element_text(size = 12, face = "bold"),
-    axis.text = element_text(size = 10),
-    legend.title = element_text(size = 11, face = "bold"),
-    legend.text = element_text(size = 10),
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5, color = "#2E3E50"),
+    plot.subtitle = element_text(size = 12, hjust = 0.5, color = "#34495E"),
+    axis.title = element_text(size = 12, face = "bold", color = "#2E3E50"),
+    axis.text = element_text(size = 10, color = "#34495E"),
+    legend.title = element_text(size = 11, face = "bold", color = "#2E3E50"),
+    legend.text = element_text(size = 10, color = "#34495E"),
     panel.grid.minor = element_blank(),
-    panel.grid.major = element_line(color = "gray90", size = 0.3)
+    panel.grid.major = element_line(color = "#BDC3C7", size = 0.3),
+    panel.background = element_rect(fill = "white", color = NA),
+    plot.background = element_rect(fill = "white", color = NA),
+    legend.background = element_rect(fill = "white", color = NA),
+    legend.box.background = element_rect(fill = "white", color = NA)
   ))
 
 # Read processed data
 data <- read.csv("data/processed_data.csv")
 data$SessionDate <- as.Date(data$SessionDate)
 
-# Color palette
-colors <- c("#2E86AB", "#A23B72", "#F18F01", "#C73E1D", "#8B5A3C", "#4A90A4")
+# Professional color palette with good contrast
+colors <- c("#3498DB", "#E74C3C", "#2ECC71", "#F39C12", "#9B59B6", "#1ABC9C", "#E67E22")
 
 # 1. Student Level Analysis
 p1 <- ggplot(data, aes(x = StudentLevel, y = SatisfactionRating, fill = StudentLevel)) +
-  geom_boxplot(alpha = 0.8) +
+  geom_boxplot(alpha = 0.8, color = "#2E3E50", linewidth = 0.8) +
   scale_fill_manual(values = colors[1:3]) +
   labs(
     title = "Satisfaction Ratings by Student Level",
@@ -37,7 +41,7 @@ p1 <- ggplot(data, aes(x = StudentLevel, y = SatisfactionRating, fill = StudentL
     y = "Satisfaction Rating",
     fill = "Student Level"
   ) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, color = "#2E3E50"))
 
 # 2. Discipline Analysis
 discipline_summary <- data %>%
@@ -49,8 +53,8 @@ discipline_summary <- data %>%
   arrange(desc(AvgSatisfaction))
 
 p2 <- ggplot(discipline_summary, aes(x = reorder(Discipline, AvgSatisfaction), y = AvgSatisfaction, fill = AvgSatisfaction)) +
-  geom_col() +
-  scale_fill_gradient(low = "#2E86AB", high = "#A23B72") +
+  geom_col(color = "#2E3E50", linewidth = 0.5) +
+  scale_fill_gradient(low = "#3498DB", high = "#E74C3C") +
   coord_flip() +
   labs(
     title = "Average Satisfaction by Discipline",
@@ -70,8 +74,8 @@ task_summary <- data %>%
   arrange(desc(AvgSatisfaction))
 
 p3 <- ggplot(task_summary, aes(x = reorder(TaskType, AvgSatisfaction), y = AvgSatisfaction, fill = TaskCount)) +
-  geom_col() +
-  scale_fill_gradient(low = "#F18F01", high = "#C73E1D") +
+  geom_col(color = "#2E3E50", linewidth = 0.5) +
+  scale_fill_gradient(low = "#F39C12", high = "#E67E22") +
   coord_flip() +
   labs(
     title = "Satisfaction by Task Type",
@@ -90,9 +94,9 @@ assistance_summary <- data %>%
   )
 
 p4 <- ggplot(assistance_summary, aes(x = AI_AssistanceLevel)) +
-  geom_line(aes(y = AvgSatisfaction, color = "Satisfaction"), size = 2) +
-  geom_line(aes(y = CompletionRate * 5, color = "Completion Rate (scaled)"), size = 2) +
-  scale_color_manual(values = c("Satisfaction" = "#2E86AB", "Completion Rate (scaled)" = "#A23B72")) +
+  geom_line(aes(y = AvgSatisfaction, color = "Satisfaction"), linewidth = 2) +
+  geom_line(aes(y = CompletionRate * 5, color = "Completion Rate (scaled)"), linewidth = 2) +
+  scale_color_manual(values = c("Satisfaction" = "#3498DB", "Completion Rate (scaled)" = "#E74C3C")) +
   scale_y_continuous(
     name = "Satisfaction Rating",
     sec.axis = sec_axis(~./5, name = "Completion Rate")
@@ -106,7 +110,7 @@ p4 <- ggplot(assistance_summary, aes(x = AI_AssistanceLevel)) +
 # 5. Session Length vs Satisfaction
 p5 <- ggplot(data, aes(x = SessionLengthMin, y = SatisfactionRating, color = StudentLevel)) +
   geom_point(alpha = 0.6, size = 2) +
-  geom_smooth(method = "loess", se = TRUE, alpha = 0.3) +
+  geom_smooth(method = "loess", se = TRUE, alpha = 0.3, linewidth = 1.5) +
   scale_color_manual(values = colors[1:3]) +
   labs(
     title = "Session Length vs Satisfaction Rating",
@@ -124,9 +128,9 @@ time_series <- data %>%
   )
 
 p6 <- ggplot(time_series, aes(x = SessionDate)) +
-  geom_line(aes(y = DailySessions, color = "Daily Sessions"), size = 1.2) +
-  geom_line(aes(y = AvgSatisfaction * 20, color = "Avg Satisfaction (scaled)"), size = 1.2) +
-  scale_color_manual(values = c("Daily Sessions" = "#2E86AB", "Avg Satisfaction (scaled)" = "#A23B72")) +
+  geom_line(aes(y = DailySessions, color = "Daily Sessions"), linewidth = 1.2) +
+  geom_line(aes(y = AvgSatisfaction * 20, color = "Avg Satisfaction (scaled)"), linewidth = 1.2) +
+  scale_color_manual(values = c("Daily Sessions" = "#3498DB", "Avg Satisfaction (scaled)" = "#E74C3C")) +
   scale_y_continuous(
     name = "Daily Sessions",
     sec.axis = sec_axis(~./20, name = "Average Satisfaction")
@@ -147,16 +151,16 @@ correlation_df <- as.data.frame(as.table(correlation_matrix))
 names(correlation_df) <- c("Var1", "Var2", "Correlation")
 
 p7 <- ggplot(correlation_df, aes(x = Var1, y = Var2, fill = Correlation)) +
-  geom_tile() +
-  geom_text(aes(label = sprintf("%.2f", Correlation)), color = "white", size = 4) +
-  scale_fill_gradient2(low = "#C73E1D", mid = "white", high = "#2E86AB", midpoint = 0) +
+  geom_tile(color = "white", linewidth = 0.5) +
+  geom_text(aes(label = sprintf("%.2f", Correlation)), color = "white", size = 4, fontface = "bold") +
+  scale_fill_gradient2(low = "#E74C3C", mid = "white", high = "#3498DB", midpoint = 0) +
   labs(
     title = "Correlation Matrix",
     x = "",
     y = "",
     fill = "Correlation"
   ) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, color = "#2E3E50"))
 
 # 8. Outcome Distribution
 outcome_summary <- data %>%
@@ -165,7 +169,7 @@ outcome_summary <- data %>%
   mutate(Percentage = Count / sum(Count) * 100)
 
 p8 <- ggplot(outcome_summary, aes(x = "", y = Percentage, fill = FinalOutcome)) +
-  geom_bar(stat = "identity", width = 1) +
+  geom_bar(stat = "identity", width = 1, color = "white", linewidth = 0.5) +
   coord_polar("y", start = 0) +
   scale_fill_manual(values = colors) +
   labs(
@@ -174,7 +178,8 @@ p8 <- ggplot(outcome_summary, aes(x = "", y = Percentage, fill = FinalOutcome)) 
     y = "",
     fill = "Outcome"
   ) +
-  theme_void()
+  theme_void() +
+  theme(plot.title = element_text(size = 16, face = "bold", hjust = 0.5, color = "#2E3E50"))
 
 # 9. Reuse Rate by Discipline
 reuse_summary <- data %>%
@@ -187,8 +192,8 @@ reuse_summary <- data %>%
   arrange(desc(ReuseRate))
 
 p9 <- ggplot(reuse_summary, aes(x = reorder(Discipline, ReuseRate), y = ReuseRate, fill = SessionCount)) +
-  geom_col() +
-  scale_fill_gradient(low = "#8B5A3C", high = "#4A90A4") +
+  geom_col(color = "#2E3E50", linewidth = 0.5) +
+  scale_fill_gradient(low = "#9B59B6", high = "#1ABC9C") +
   coord_flip() +
   labs(
     title = "AI Tool Reuse Rate by Discipline",
@@ -200,7 +205,7 @@ p9 <- ggplot(reuse_summary, aes(x = reorder(Discipline, ReuseRate), y = ReuseRat
 # 10. Session Efficiency Analysis
 p10 <- ggplot(data, aes(x = SessionEfficiency, y = SatisfactionRating, color = StudentLevel)) +
   geom_point(alpha = 0.6, size = 2) +
-  geom_smooth(method = "loess", se = TRUE, alpha = 0.3) +
+  geom_smooth(method = "loess", se = TRUE, alpha = 0.3, linewidth = 1.5) +
   scale_color_manual(values = colors[1:3]) +
   labs(
     title = "Session Efficiency vs Satisfaction",
@@ -210,16 +215,16 @@ p10 <- ggplot(data, aes(x = SessionEfficiency, y = SatisfactionRating, color = S
   ) +
   xlim(0, quantile(data$SessionEfficiency, 0.95, na.rm = TRUE))  # Remove outliers
 
-# Save individual plots
-ggsave("plots/student_level_satisfaction.png", p1, width = 10, height = 6, dpi = 300)
-ggsave("plots/discipline_satisfaction.png", p2, width = 10, height = 8, dpi = 300)
-ggsave("plots/task_type_satisfaction.png", p3, width = 10, height = 8, dpi = 300)
-ggsave("plots/assistance_level_impact.png", p4, width = 10, height = 6, dpi = 300)
-ggsave("plots/session_length_satisfaction.png", p5, width = 10, height = 6, dpi = 300)
-ggsave("plots/usage_trends.png", p6, width = 12, height = 6, dpi = 300)
-ggsave("plots/correlation_matrix.png", p7, width = 8, height = 8, dpi = 300)
-ggsave("plots/outcome_distribution.png", p8, width = 8, height = 8, dpi = 300)
-ggsave("plots/reuse_rate_discipline.png", p9, width = 10, height = 8, dpi = 300)
-ggsave("plots/session_efficiency.png", p10, width = 10, height = 6, dpi = 300)
+# Save individual plots with high quality
+ggsave("plots/student_level_satisfaction.png", p1, width = 10, height = 6, dpi = 300, bg = "white")
+ggsave("plots/discipline_satisfaction.png", p2, width = 10, height = 8, dpi = 300, bg = "white")
+ggsave("plots/task_type_satisfaction.png", p3, width = 10, height = 8, dpi = 300, bg = "white")
+ggsave("plots/assistance_level_impact.png", p4, width = 10, height = 6, dpi = 300, bg = "white")
+ggsave("plots/session_length_satisfaction.png", p5, width = 10, height = 6, dpi = 300, bg = "white")
+ggsave("plots/usage_trends.png", p6, width = 12, height = 6, dpi = 300, bg = "white")
+ggsave("plots/correlation_matrix.png", p7, width = 8, height = 8, dpi = 300, bg = "white")
+ggsave("plots/outcome_distribution.png", p8, width = 8, height = 8, dpi = 300, bg = "white")
+ggsave("plots/reuse_rate_discipline.png", p9, width = 10, height = 8, dpi = 300, bg = "white")
+ggsave("plots/session_efficiency.png", p10, width = 10, height = 6, dpi = 300, bg = "white")
 
-cat("All visualizations saved to 'plots/' directory\n") 
+cat("All visualizations saved to 'plots/' directory with improved contrast and readability\n") 
