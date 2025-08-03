@@ -118,7 +118,9 @@ The project includes comprehensive visualizations covering all key insights:
 *Session efficiency vs satisfaction relationship*
 
 ### Interactive Dashboard
-Access the full interactive dashboard: [Dashboard](dashboard.html)
+Access the full interactive dashboard: [Dashboard](https://sezerhasan.github.io/ai-usage-by-students/dashboard.html)
+
+**Live Site**: [https://sezerhasan.github.io/ai-usage-by-students/](https://sezerhasan.github.io/ai-usage-by-students/)
 
 ## Technical Details
 
@@ -157,6 +159,11 @@ library(cluster)
 
 ## Getting Started
 
+### Live Demo
+- **Main Site**: [https://sezerhasan.github.io/ai-usage-by-students/](https://sezerhasan.github.io/ai-usage-by-students/)
+- **Interactive Dashboard**: [https://sezerhasan.github.io/ai-usage-by-students/dashboard.html](https://sezerhasan.github.io/ai-usage-by-students/dashboard.html)
+
+### Local Setup
 1. **Clone the repository**
 2. **Install R and required packages**
 3. **Run analysis scripts**:
