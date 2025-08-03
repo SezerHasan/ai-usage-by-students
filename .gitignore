@@ -29,7 +29,7 @@ Thumbs.db
 
 # Output files
 *.pdf
-*.png
+# *.png  # Commented out to allow plot images
 *.jpg
 *.jpeg
 *.svg
